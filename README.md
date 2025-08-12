@@ -16,3 +16,25 @@ Good luck, and most importantly, have fun!
 - Code structure, readability, testability and maintainability.
 - Database design choices.
 - Bonus: Security best practices and scalability considerations.
+
+# Nader's additions
+
+## Information
+- There are three pages that have work done by me
+  - Clients page (accessible via the navbar)
+  - Specific Client page (accessible via the `View` button in the Clients page)
+  - The Clients status page (accessible via the navbar)
+- The charts are made with Chart.js
+- This is not meant to be a solution that addresses all possible pitfalls, there are security and scalability concerns with this implementation
+
+## Instructions
+- The application can use either just the JSON files to get the data or a postgres database created with EntityFramework
+  - To toggle between the two:
+    - In docker edit the environment variable: `NipedSettings__UseDatabase`
+      - `True` uses the postgres database that is created in the same docker compose, `False` only uses the Json files
+    - If running from an IDE change the `NipedSettings.UseDatabase` value in the appropriate `appsettings.json`
+- By default the application will available at http://localhost/
+- To start the application use `docker compose up` to run everything in docker
+- If you want to the application only without docker set `NipedSettings.UseDatabase` to `False` and run the application from your favourite IDE.
+- To use the database with the application from your IDE then run `docker compose up postgresdb` and then run the application from your favourite IDE.
+
