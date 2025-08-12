@@ -1,0 +1,120 @@
+@using System.Text.Encodings.Web
+@using System.Text.Json
+@using System.Text.Unicode
+@model NipedTestApp.Models.Clients.StatisticsModel
+@{
+    ViewData["Title"] = "Clients Stats page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <canvas id="genderChart" ></canvas>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="w-50 p-3">
+            <canvas id="ageChart"></canvas>
+        </div>
+        <div class="w-50 p-3">
+            <canvas id="bloodSugarChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="w-50 p-3">
+            <canvas id="bloodPressureChart"></canvas>
+        </div>
+        <div class="w-50 p-3">
+            <canvas id="cholesterolChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="w-50 p-3">
+            <canvas id="exerciseWeeklyMinutesChart"></canvas>
+        </div>
+        <div class="w-50 p-3">
+            <canvas id="sleepQualityChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="w-50 p-3">
+            <canvas id="stressLevelsChart"></canvas>
+        </div>
+        <div class="w-50 p-3">
+            <canvas id="dietQualityChart"></canvas>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+
+    <script>        
+        makeChart('ageChart', 'bar',
+            [@Html.Raw(string.Join(",", Model.AgeRangeCounts.Keys.Select(x=> "\"" + x + "\"").ToList()))],
+            ['Age Distribution'],
+            [[@string.Join(",", Model.AgeRangeCounts.Values.ToList())]]);
+
+        makeChart('genderChart', 'pie',
+            [@Html.Raw(string.Join(",", Model.GenderCounts.Keys.Select(x=> "\"" + x + "\"").ToList()))],
+            ['Gender Distribution'],
+            [[@string.Join(",", Model.GenderCounts.Values.ToList())]]);
+        
+        makeChart('bloodSugarChart', 'bar', 
+            [@Html.Raw(string.Join(",", Model.BloodSugarCounts.Keys.Select(x=> "\"" + x + "\"").ToList()))],
+            ['Blood Sugar statuses'],
+            [[@string.Join(",", Model.BloodSugarCounts.Values.ToList())]]);
+
+        makeChart('bloodPressureChart', 'bar',
+            [@Html.Raw(string.Join(",", Model.BloodPressureSystolicCounts.Keys.Select(x=> "\"" + x + "\"").ToList()))],
+            ['Blood Pressure - Systolic', "Blood Pressure - Diastolic"],
+            [[@string.Join(",", Model.BloodPressureSystolicCounts.Values.ToList())], [@string.Join(",", Model.BloodPressureDiastolicCounts.Values.ToList())]]);
+        
+        makeChart('cholesterolChart', 'bar',
+            [@Html.Raw(string.Join(",", Model.CholesterolTotalCounts.Keys.Select(x=> "\"" + x + "\"").ToList()))],
+            ['Cholesterol - Total', "Cholesterol - HDL", "Cholesterol - LDL"],
+            [
+                [@string.Join(",", Model.CholesterolTotalCounts.Values.ToList())],
+                [@string.Join(",", Model.CholesterolHdlCounts.Values.ToList())],
+                [@string.Join(",", Model.CholesterolLdlCounts.Values.ToList())]
+            ]);
+
+        makeChart('exerciseWeeklyMinutesChart', 'bar',
+            [@Html.Raw(string.Join(",", Model.ExerciseWeeklyMinutesCounts.Keys.Select(x=> "\"" + x + "\"").ToList()))],
+            ['Weekly exercise minutes'],
+            [[@string.Join(",", Model.ExerciseWeeklyMinutesCounts.Values.ToList())]]);
+
+        makeChart('sleepQualityChart', 'bar',
+            [@Html.Raw(string.Join(",", Model.SleepQualityCounts.Keys.Select(x=> "\"" + x + "\"").ToList()))],
+            ['Sleep Quality'],
+            [[@string.Join(",", Model.SleepQualityCounts.Values.ToList())]]);
+
+        makeChart('stressLevelsChart', 'bar',
+            [@Html.Raw(string.Join(",", Model.StressLevelsCounts.Keys.Select(x=> "\"" + x + "\"").ToList()))],
+            ['Stress Levels'],
+            [[@string.Join(",", Model.StressLevelsCounts.Values.ToList())]]);
+
+        makeChart('dietQualityChart', 'bar',
+            [@Html.Raw(string.Join(",", Model.DietQualityCounts.Keys.Select(x=> "\"" + x + "\"").ToList()))],
+            ['Diet Quality'],
+            [[@string.Join(",", Model.DietQualityCounts.Values.ToList())]]);
+    </script>
+}
+
+
+
+

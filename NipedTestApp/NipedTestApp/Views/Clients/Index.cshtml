@@ -1,0 +1,39 @@
+﻿@using System.Text.Encodings.Web
+@using System.Text.Json
+@using System.Text.Unicode
+@model NipedTestApp.Models.Clients.IndexModel
+@{
+    ViewData["Title"] = "Clients page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">All clients</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Date of Birth (DD/MM/YYYY)</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var client in Model.Clients)
+        {
+            <tr>
+                <td>@client.Id</td>
+                <td>@client.Name</td>
+                <td>@client.DateOfBirth.ToString("dd/MM/yyyy")</td>
+                <td>@client.Age</td>
+                <td>@client.Gender</td>
+                <td><a asp-controller="Clients" asp-action="ClientInfo" asp-route-id="@client.Id">View</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+
+

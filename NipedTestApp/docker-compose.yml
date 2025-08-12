@@ -1,0 +1,25 @@
+services:
+  postgresdb:
+    image: postgres:latest
+    container_name: postgresdb
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: example
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+  
+  
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: webapp
+    ports:
+      - "80:8080"
+    environment:
+      NipedSettings__UseDatabase: true
+      NipedSettings__NipedDatabase: "Host=postgresdb;Port=5432;Database=postgres;Username=root;Password=example"
+    depends_on:
+      - postgresdb

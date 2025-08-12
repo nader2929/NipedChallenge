@@ -1,0 +1,98 @@
+@model NipedTestApp.Models.Clients.ClientDataModel
+@{
+    ViewData["Title"] = "Client - " + @Model.Client.Name;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm text-center">
+            <div class="text-center"><h3>Info</h3></div>
+            <p><b>Name:</b> @Model.Client.Name</p>
+            <p><b>Date of birth:</b> @Model.Client.DateOfBirth</p>
+            <p><b>Age:</b> @Model.Client.Age</p>
+            <p><b>Gender:</b> @Model.Client.Gender</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="text-center"><h3>Bloodworks</h3></div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th colspan="3">Cholesterol</th>
+                    <th>Blood Sugar</th>
+                    <th colspan="2">Blood Pressure</th>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <th>HDL</th>
+                    <th>LDL</th>
+                    <th></th>
+                    <th>Systolic</th>
+                    <th>Diastolic</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var bloodwork in Model.Bloodworks)
+                {
+                    <tr>
+                        <td>@bloodwork.CholesterolTotal</td>
+                        <td>@bloodwork.CholesterolHdl</td>
+                        <td>@bloodwork.CholesterolLdl</td>
+                        <td>@bloodwork.BloodSugar</td>
+                        <td>@bloodwork.BloodPressureSystolic</td>
+                        <td>@bloodwork.BloodPressureDiastolic</td>
+                    </tr>
+                    <tr>
+                        <td>@bloodwork.Status.CholesterolTotal</td>
+                        <td>@bloodwork.Status.CholesterolHdl</td>
+                        <td>@bloodwork.Status.CholesterolLdl</td>
+                        <td>@bloodwork.Status.BloodSugar</td>
+                        <td>@bloodwork.Status.BloodPressureSystolic</td>
+                        <td>@bloodwork.Status.BloodPressureDiastolic</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        
+        <div class="col-sm">
+            <div class="text-center"><h3>Questionnaires</h3></div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Exercise Weekly Minutes</th>
+                    <th>Sleep Quality</th>
+                    <th>Stress Levels</th>
+                    <th>Diet Quality</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var questionnaire in Model.Questionnaires)
+                {
+                    <tr>
+                        <td>@questionnaire.ExerciseWeeklyMinutes</td>
+                        <td>@questionnaire.SleepQuality</td>
+                        <td>@questionnaire.StressLevels</td>
+                        <td>@questionnaire.DietQuality</td>
+                    </tr>
+                    <tr>
+                        <td>@questionnaire.Status.ExerciseWeeklyMinutes</td>
+                        <td>@questionnaire.Status.SleepQuality</td>
+                        <td>@questionnaire.Status.StressLevels</td>
+                        <td>@questionnaire.Status.DietQuality</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

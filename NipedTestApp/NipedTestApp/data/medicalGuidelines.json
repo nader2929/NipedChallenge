@@ -1,0 +1,68 @@
+{
+  "guidelines": {
+    "cholesterol": {
+      "total": {
+        "optimal": "<200",
+        "needsAttention": "200-239",
+        "seriousIssue": ">=240",
+        "numerical": true
+      },
+      "hdl": {
+        "optimal": ">60",
+        "needsAttention": "40-60",
+        "seriousIssue": "<40",
+        "numerical": true
+      },
+      "ldl": {
+        "optimal": "<100",
+        "needsAttention": "100-129",
+        "seriousIssue": ">=130",
+        "numerical": true
+      }
+    },
+    "bloodSugar": {
+      "optimal": "70-99",
+      "needsAttention": "100-125",
+      "seriousIssue": ">=126",
+      "numerical": true
+    },
+    "bloodPressure": {
+      "systolic": {
+        "optimal": "<120",
+        "needsAttention": "120-129",
+        "seriousIssue": ">=130",
+        "numerical": true
+      },
+      "diastolic": {
+        "optimal": "<80",
+        "needsAttention": "<80",
+        "seriousIssue": ">=80",
+        "numerical": true
+      }
+    },
+    "exerciseWeeklyMinutes": {
+      "optimal": ">=150",
+      "needsAttention": "75-149",
+      "seriousIssue": "<75",
+      "numerical": true
+    },
+    "sleepQuality": {
+      "optimal": "7-9 hours with restful sleep",
+      "needsAttention": "5-6 hours or frequent disturbances",
+      "seriousIssue": "<5 hours or severe sleep issues",
+      "numerical": false
+    },
+    "stressLevels": {
+      "optimal": "Low self-reported stress",
+      "needsAttention": "Moderate self-reported stress",
+      "seriousIssue": "High chronic stress affecting well-being",
+      "numerical": false
+    },
+    "dietQuality": {
+      "optimal": "Balanced, nutrient-rich diet",
+      "needsAttention": "Processed or high-sugar diet",
+      "seriousIssue": "Poor nutrition with deficiencies",
+      "numerical": false
+    }
+  }
+}
